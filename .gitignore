@@ -1,0 +1,5 @@
+# 编译输出文件
+/build
+/build.out
+/.vscode
+

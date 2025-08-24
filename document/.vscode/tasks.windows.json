@@ -1,0 +1,115 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure: mingw-x64-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "mingw.x64.Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: mingw-x64-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.mingw-x64-Debug"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: mingw-x64-Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure: mingw-x64-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "mingw.x64.Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: mingw-x64-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.mingw-x64-Release"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: mingw-x64-Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure: mingw-x86-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "mingw.x86.Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: mingw-x86-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.mingw-x86-Debug"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: mingw-x86-Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure: mingw-x86-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "mingw.x86.Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: mingw-x86-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.mingw-x86-Release"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: mingw-x86-Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Clear: All",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/c",
+                "for %d in (build build.out .vs) do @rd /s /q %d"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

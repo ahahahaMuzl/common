@@ -1,0 +1,15 @@
+// Place your key bindings in this file to override the defaults
+[
+    // 转成大写
+    {
+        "key": "ctrl+shift+u",
+        "command": "editor.action.transformToUppercase",
+        "when": "editorTextFocus"
+    },
+    // 转成小写
+    {
+        "key": "ctrl+u",
+        "command": "editor.action.transformToLowercase",
+        "when": "editorTextFocus"
+    }
+]

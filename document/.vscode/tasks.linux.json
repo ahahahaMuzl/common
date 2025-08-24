@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure: gnu-x64-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "gnu.x64.Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: gnu-x64-Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.gnu-x64-Debug"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: gnu-x64-Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure: gnu-x64-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--preset",
+                "gnu.x64.Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build: gnu-x64-Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "--preset",
+                "build.gnu-x64-Release"
+            ],
+            "group": "build",
+            "dependsOn": [
+                "Configure: gnu-x64-Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Clear: All",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "build",
+                "build.out",
+                ".vs"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,130 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build.out/${presetName}/bin",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build.out/${presetName}/bin",
+                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/build.out/${presetName}/bin"
+            }
+        },
+        {
+            "name": "mingw.base",
+            "inherits": "base",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "mingw.x64.Debug",
+            "displayName": "mingw-x64-Debug",
+            "inherits": "mingw.base",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "x86_64-w64-mingw32-gcc",
+                "CMAKE_CXX_COMPILER": "x86_64-w64-mingw32-g++",
+                "CMAKE_SYSTEM_PROCESSOR": "x86_64",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingw.x64.Release",
+            "displayName": "mingw-x64-Release",
+            "inherits": "mingw.x64.Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "mingw.x86.Debug",
+            "displayName": "mingw-x86-Debug",
+            "inherits": "mingw.base",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "i686-w64-mingw32-gcc",
+                "CMAKE_CXX_COMPILER": "i686-w64-mingw32-g++",
+                "CMAKE_SYSTEM_PROCESSOR": "x86",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingw.x86.Release",
+            "displayName": "mingw-x86-Release",
+            "inherits": "mingw.x86.Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "gnu.base",
+            "inherits": "base",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "gnu.x64.Debug",
+            "displayName": "gnu-x64-Debug",
+            "inherits": "gnu.base",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_SYSTEM_PROCESSOR": "x86_64",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "gnu.x64.Release",
+            "displayName": "gnu-x64-Release",
+            "inherits": "gnu.x64.Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build.mingw-x64-Debug",
+            "configurePreset": "mingw.x64.Debug",
+            "jobs": 0
+        },
+        {
+            "name": "build.mingw-x64-Release",
+            "configurePreset": "mingw.x64.Release",
+            "jobs": 0
+        },
+        {
+            "name": "build.mingw-x86-Debug",
+            "configurePreset": "mingw.x86.Debug",
+            "jobs": 0
+        },
+        {
+            "name": "build.mingw-x86-Release",
+            "configurePreset": "mingw.x86.Release",
+            "jobs": 0
+        },
+        {
+            "name": "build.gnu-x64-Debug",
+            "configurePreset": "gnu.x64.Debug",
+            "jobs": 0
+        },
+        {
+            "name": "build.gnu-x64-Release",
+            "configurePreset": "gnu.x64.Release",
+            "jobs": 0
+        }
+    ]
+}
